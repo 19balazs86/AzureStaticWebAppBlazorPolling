@@ -1,19 +1,15 @@
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Azure.Functions.Worker.Configuration;
 
-namespace ApiIsolated
+namespace BlazorApp.Api;
+
+public static class Program
 {
-    public class Program
+    public static void Main()
     {
-        public static void Main()
-        {
-            var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
-                .Build();
+        IHost host = new HostBuilder()
+            .ConfigureFunctionsWorkerDefaults()
+            .Build();
 
-            host.Run();
-        }
+        host.Run();
     }
 }
