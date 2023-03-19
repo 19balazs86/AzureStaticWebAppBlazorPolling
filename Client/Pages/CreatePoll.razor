@@ -1,0 +1,161 @@
+﻿@page "/CreatePoll"
+
+@inject HttpClient _http
+@inject NavigationManager _navigationManager
+
+<PageTitle>Create a new poll</PageTitle>
+
+<div class="container" style="max-width: 550px">
+    <h1>Create a new poll</h1>
+
+    <EditForm EditContext="@_editContext" OnValidSubmit="@createPollSubmit">
+        <DataAnnotationsValidator />
+
+        <div class="mb-3">
+            <label for="question" class="form-label">Question</label>
+            <InputText id="question" class="form-control" @bind-Value="_createPollFormModel.Question" />
+            <ValidationMessage For="@(() => _createPollFormModel.Question)" />
+        </div>
+
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Select an image (optional)</label>
+            <InputFile id="formFile" class="form-control" accept="image/*" OnChange="@imageOnChange" />
+        </div>
+
+        <div class="mb-3">
+            <label for="closingAt" class="form-label">Closing date and time (optional, DateTime.Now + 5 minutes)</label>
+            <input id="closingAt" type="datetime-local" @bind="_createPollFormModel.ClosingAt" class="form-control" style="max-width: 220px" />
+            <ValidationMessage For="@(() => _createPollFormModel.ClosingAt)" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Options</label>
+
+            @for (int i = 0; i < _createPollFormModel.Options.Count; i++)
+            {
+                int index = i;
+
+                <div class="input-group mb-3">
+                    <button type="button" class="btn btn-outline-secondary" @onclick="() => addOption(index)">
+                        <span class="oi oi-plus" aria-hidden="true"></span>
+                    </button>
+                    <input type="text" class="form-control" placeholder="@($"Option #{index + 1}")"
+                        @bind="_createPollFormModel.Options[index]"
+                        @bind:after="validateForm" />
+                    <button class="btn btn-outline-secondary" type="button" @onclick="() => removeOption(index)">
+                        <span class="oi oi-trash" aria-hidden="true"></span>
+                    </button>
+                </div>
+            }
+
+            <ValidationMessage For="@(() => _createPollFormModel.Options)" />
+        </div>
+
+        @if (_isInProgress)
+        {
+            <p>Loading...</p>
+        }
+        else
+        {
+            <button type="submit" class="btn btn-primary">Create this poll</button>
+        }
+    </EditForm>
+
+    @if (_isFailedToCreate)
+    {
+        <div class="text-danger">
+            Something went wrong
+        </div>
+    }
+
+</div>
+
+@code {
+    private CreatePollFormModel _createPollFormModel = new();
+
+    private EditContext _editContext = new EditContext(new CreatePollFormModel());
+
+    private bool _isFailedToCreate;
+
+    private bool _isInProgress;
+
+    protected override void OnInitialized()
+    {
+        _editContext = new EditContext(_createPollFormModel);
+    }
+
+    private async Task createPollSubmit()
+    {
+        _isInProgress = true;
+
+        var payload = new MultipartFormDataContent();
+
+        var question = new StringContent(_createPollFormModel.Question);
+
+        payload.Add(question, "Question");
+
+        if (_createPollFormModel.Image is not null)
+        {
+            Stream imageStream     = _createPollFormModel.Image.OpenReadStream(_createPollFormModel.Image.Size);
+            var imageStreamContent = new StreamContent(imageStream);
+
+            payload.Add(imageStreamContent, "image", _createPollFormModel.Image.Name);
+        }
+
+        if (_createPollFormModel.ClosingAt is not null)
+        {
+            var closingAt = new StringContent(_createPollFormModel.ClosingAt.Value.ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:00Z"));
+
+            payload.Add(closingAt, "ClosingAt");
+        }
+
+        foreach (string optionText in _createPollFormModel.Options)
+        {
+            var option = new StringContent(optionText);
+
+            payload.Add(option, "Option");
+        }
+
+        using HttpResponseMessage response = await _http.PostAsync("/api/Poll", payload);
+
+        _isInProgress = false;
+
+        _isFailedToCreate = !response.IsSuccessStatusCode;
+
+        if (_isFailedToCreate)
+        {
+            return;
+        }
+
+        string pollId = await response.Content.ReadAsStringAsync();
+
+        _navigationManager.NavigateTo($"/poll/{pollId}");
+    }
+
+    private void addOption(int index)
+    {
+        _createPollFormModel.Options.Insert(index + 1, string.Empty);
+    }
+
+    private void removeOption(int index)
+    {
+        if (_createPollFormModel.Options.Count == 1)
+            return;
+
+        _createPollFormModel.Options.RemoveAt(index);
+    }
+
+    private void validateForm()
+    {
+        _editContext.Validate();
+    }
+
+    private async Task imageOnChange(InputFileChangeEventArgs e)
+    {
+        //IReadOnlyList<IBrowserFile> imageFiles = e.GetMultipleFiles(1);
+
+        IBrowserFile resizedImageFile = await e.File.RequestImageFileAsync("image/jpeg", 200, 200);
+
+        _createPollFormModel.Image = resizedImageFile;
+    }
+}

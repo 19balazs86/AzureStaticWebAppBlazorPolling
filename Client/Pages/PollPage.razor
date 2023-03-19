@@ -1,0 +1,117 @@
+﻿@page "/poll/{PollId}"
+
+@inject HttpClient _http
+
+<PageTitle>Poll</PageTitle>
+
+<div class="container">
+    @if (_pollPageDto is null && !_isFailedToGet)
+    {
+        <p>Loading...</p>
+    }
+    else if (_isFailedToGet)
+    {
+        <div class="text-danger">
+            Something went wrong
+        </div>
+    }
+    else if (_pollPageDto is not null)
+    {
+        <h1>@_pollPageDto.Question</h1>
+
+        <div>
+            @if (_pollPageDto.ClosingAt.HasValue)
+            {
+                <span class="oi oi-timer"></span>
+                @if (_pollPageDto.IsClosed)
+                {
+                    <span> Closed at @_pollPageDto.ClosingAt</span>
+                }
+                else
+                {
+                    <span> Closing at @_pollPageDto.ClosingAt</span>
+                }
+            }
+        </div>
+
+        <img src="@_pollPageDto.ImageUrl" />
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @if (!_pollPageDto.IsClosed)
+                    {
+                        <th width="50px">Vote</th>
+                    }
+                    <th width="80px">Counter</th>
+                    <th>Option</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PollOptionDto optionDto in _pollPageDto.Options)
+                {
+                    <tr>
+                        @if (!_pollPageDto.IsClosed)
+                        {
+                            <td align="center">
+                                <button type="button" class="btn btn-sm btn-primary" @onclick="() => voteOnClick(optionDto)">
+                                    <span class="oi oi-plus"></span>
+                                </button>
+                            </td>
+                        }
+                        <td align="center">@optionDto.Counter</td>
+                        <td>@optionDto.Text</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public string PollId { get; set; } = string.Empty;
+
+    private PollPageDto? _pollPageDto;
+
+    private bool _isFailedToGet;
+
+    private DateTime _lastVote = DateTime.UtcNow;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using var response = await _http.GetAsync($"/api/Poll/{PollId}");
+
+        _isFailedToGet = !response.IsSuccessStatusCode;
+
+        if (_isFailedToGet)
+            return;
+
+        var pollPageDto = await response.Content.ReadFromJsonAsync<PollPageDto>();
+
+        if (pollPageDto?.ClosingAt.HasValue is true)
+        {
+            pollPageDto.ClosingAt = pollPageDto.ClosingAt.Value.ToLocalTime();
+        }
+
+        _pollPageDto = pollPageDto;
+    }
+
+    private async Task voteOnClick(PollOptionDto optionDto)
+    {
+        // Wait 3 seconds between 2 votes
+        if ((DateTime.UtcNow - _lastVote) < TimeSpan.FromSeconds(3))
+            return;
+
+        _lastVote = DateTime.UtcNow;
+
+        var voteRequest = new VoteRequest { OptionId = optionDto.Id };
+
+        using var response = await _http.PostAsJsonAsync("/api/Vote", voteRequest);
+
+        if (!response.IsSuccessStatusCode)
+            return;
+
+        optionDto.Counter++;
+    }
+}

@@ -1,9 +1,54 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+@inject HttpClient _http
 
-<h1>Hello, world!</h1>
+<PageTitle>Polls</PageTitle>
 
-Welcome to your new app.
+<div class="container">
+    @if (_polls is null && !_isFailedToGet)
+    {
+        <p>Loading...</p>
+    }
+    else if (_isFailedToGet)
+    {
+        <div class="text-danger">
+            Something went wrong
+        </div>
+    }
+    else if (_polls is not null)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Poll - Questions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (PollDto pollDto in _polls)
+                {
+                    <tr>
+                        <td><a href="/poll/@pollDto.Id">@pollDto.Question</a></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private IEnumerable<PollDto>? _polls;
+
+    private bool _isFailedToGet;
+
+    protected override async Task OnInitializedAsync()
+    {
+        using HttpResponseMessage response = await _http.GetAsync("/api/Poll");
+
+        _isFailedToGet = !response.IsSuccessStatusCode;
+
+        if (_isFailedToGet)
+            return;
+
+        _polls = await response.Content.ReadFromJsonAsync<IEnumerable<PollDto>>();
+    }
+}
