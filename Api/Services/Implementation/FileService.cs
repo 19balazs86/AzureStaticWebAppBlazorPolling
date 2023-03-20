@@ -3,6 +3,9 @@ using Azure.Storage.Blobs.Models;
 
 namespace BlazorApp.Api.Services.Implementation;
 
+// Codewrinkles: Working with Azure Blob Storage
+// https://youtu.be/GhlMa3jx_XA
+
 public sealed class FileService : IFileService
 {
     public const string ImageContainerName = "poll-images";
