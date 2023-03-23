@@ -2,7 +2,9 @@
 
 After watching a video by James Montemagno, I was amazed that it only took a few clicks to get up and running. So, I started this repository for a small project and to have fun with Static WebApp.
 
-Unfortunately, the API function **does not support QueueTrigger**, so I did not continue working on it...
+Unfortunately, the API function does not support QueueTrigger. **Only HTTP triggers are allowed** to work with. [See the constraints](https://learn.microsoft.com/en-us/azure/static-web-apps/apis-functions#constraints).
+
+I did not continue working on it...
 
 ##### Resources
 
@@ -16,6 +18,11 @@ Unfortunately, the API function **does not support QueueTrigger**, so I did not 
   - Visual Studio can run the Client and API as multiple startup projects. If you are using the built-in authentication, you will need to start the Static WebApp with the following command:
     - swa start http://localhost:5000 --api-location http://localhost:7071
   - The SWA CLI tool requires Node.js, and it was working with version 14.
+  - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools/releases) 👤*Azure, install it if needed*
+- Connecting to a database with SWA
+  - [Database connection overview](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview) 📚*Microsoft learn*
+  - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6m - Azure Tips and Tricks - Microsoft Developer*
+
 
 
 ###### Other resources
