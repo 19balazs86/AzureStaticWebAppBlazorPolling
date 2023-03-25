@@ -21,6 +21,7 @@ I did not continue working on it...
   - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools/releases) 👤*Azure, install it if needed*
 - Connecting to a database with SWA
   - [Database connection overview](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview) 📚*Microsoft learn*
+  - [Best practices with database connections](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/building-static-web-apps-with-database-connections-best/ba-p/3777155) 📓*Tech Community*
   - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6m - Azure Tips and Tricks - Microsoft Developer*
 
 
