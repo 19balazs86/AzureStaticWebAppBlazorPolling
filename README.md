@@ -23,6 +23,7 @@ I did not continue working on it...
   - [Database connection overview](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview) 📚*Microsoft learn*
   - [Best practices with database connections](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/building-static-web-apps-with-database-connections-best/ba-p/3777155) 📓*Tech Community*
   - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6m - Azure Tips and Tricks - Microsoft Developer*
+- GitHub actions and SWA [using Lighthouse](https://johnnyreilly.com/lighthouse-meet-github-actions) and [Playwright for SWA staging environments](https://johnnyreilly.com/playwright-github-actions-and-azure-static-web-apps-staging-environments) 📓*Johnny Reilly*
 
 
 
