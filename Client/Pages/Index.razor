@@ -40,6 +40,9 @@
 
     private bool _isFailedToGet;
 
+    // State has not changed? Why and when Blazor components re-render
+    // https://jonhilton.net/blazor-rendering
+    
     protected override async Task OnInitializedAsync()
     {
         using HttpResponseMessage response = await _http.GetAsync("/api/Poll");
