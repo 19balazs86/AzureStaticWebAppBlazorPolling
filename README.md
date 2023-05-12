@@ -10,8 +10,9 @@ I did not continue working on it...
 
 - [Blazor-starter template](https://github.com/staticwebdev/blazor-starter) 👤*StaticWebDev*
 - [Fallen in love Azure Static Web Apps](https://youtu.be/AgP4p8qhi4s) 📽️*26m - James Montemagno*
-- [Authentication in Azure Static Web Apps](https://youtu.be/SqgSUgDlgLM) 📽*️35m - dotnetFlix - Stacy Cashmore*
 - [Authenticate and Authorize](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization) 📚*Microsoft learn*
+  - [Authentication in Azure Static Web Apps](https://youtu.be/SqgSUgDlgLM) 📽*️35m - dotnetFlix - Stacy Cashmore*
+  - [Auth0 in Azure SWA for Blazor WASM](https://auth0.com/blog/support-auth0-in-azure-static-web-apps-for-blazor-wasm) 📓*Auth0 blog*
 - [Deploying Blazor WASM to Azure Static Web Apps](https://www.dotnetcurry.com/aspnet-core/deploy-blazor-webassembly-azure-static-web-apps) 📓*DotnetCurry*
 - [#30DaysOfSWA](https://www.azurestaticwebapps.dev/) 📓
 - [Azure Static Web Apps CLI](https://azure.github.io/static-web-apps-cli) 📓*GitHub documentation*
@@ -26,7 +27,6 @@ I did not continue working on it...
 - Data API Builder (DAP)
   - [Repository for Data API Builder](https://github.com/Azure/data-api-builder) 👤*Azure*
   - [Try out the Data API Builder](https://bartwullems.blogspot.com/2023/03/azure-data-api-builder.html) 📓*Bart Wullems*
-
 - GitHub actions and SWA [using Lighthouse](https://johnnyreilly.com/lighthouse-meet-github-actions) and [Playwright for SWA staging environments](https://johnnyreilly.com/playwright-github-actions-and-azure-static-web-apps-staging-environments) 📓*Johnny Reilly*
 
 
