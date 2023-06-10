@@ -17,7 +17,8 @@ I did not continue working on it...
 - [#30DaysOfSWA](https://www.azurestaticwebapps.dev/) 📓
 - [Azure Static Web Apps CLI](https://azure.github.io/static-web-apps-cli) 📓*GitHub documentation*
   - Visual Studio can run the Client and API as multiple startup projects. If you are using the built-in authentication, you will need to start the Static WebApp with the following command:
-    - swa start http://localhost:5000 --api-location http://localhost:7071
+    - `swa start http://localhost:5000 --api-location http://localhost:7071`
+  - Other option: [Configure SWA CLI swa-cli.config.json file](https://learn.microsoft.com/en-us/azure/static-web-apps/static-web-apps-cli-configuration) when you use `swa start`
   - The SWA CLI tool requires Node.js, and it was working with version 14.
   - [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools/releases) 👤*Azure, install it if needed*
 - Connecting to a database with SWA
