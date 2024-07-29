@@ -23,14 +23,14 @@ public sealed class InfrastructureService : BackgroundService
 
         IServiceProvider serviceProvider = scope.ServiceProvider;
 
-        await createBlobContainerIfNotExists(serviceProvider);
+        await ensureBlobContainerExists(serviceProvider);
 
-        await createQueueIfNotExists(serviceProvider);
+        await ensureQueueExists(serviceProvider);
 
-        await createTableIfNotExists(serviceProvider);
+        await ensureTableExists(serviceProvider);
     }
 
-    private async Task createBlobContainerIfNotExists(IServiceProvider serviceProvider)
+    private async Task ensureBlobContainerExists(IServiceProvider serviceProvider)
     {
         BlobServiceClient blobServiceClient = serviceProvider.GetRequiredService<BlobServiceClient>();
 
@@ -39,7 +39,7 @@ public sealed class InfrastructureService : BackgroundService
         await blobContainerClient.CreateIfNotExistsAsync(publicAccessType: PublicAccessType.Blob);
     }
 
-    private async Task createQueueIfNotExists(IServiceProvider serviceProvider)
+    private async Task ensureQueueExists(IServiceProvider serviceProvider)
     {
         QueueServiceClient queueServiceClient = serviceProvider.GetRequiredService<QueueServiceClient>();
 
@@ -48,7 +48,7 @@ public sealed class InfrastructureService : BackgroundService
         await queueClient.CreateIfNotExistsAsync();
     }
 
-    private async Task createTableIfNotExists(IServiceProvider serviceProvider)
+    private async Task ensureTableExists(IServiceProvider serviceProvider)
     {
         TableServiceClient tableServiceClient = serviceProvider.GetRequiredService<TableServiceClient>();
 
