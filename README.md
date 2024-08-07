@@ -27,7 +27,8 @@ I did not continue working on it...
   - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6m - Azure Tips and Tricks - Microsoft Developer*
 - Data API Builder (DAP)
   - [Data API builder documentation](https://learn.microsoft.com/en-us/azure/data-api-builder) 📚*Microsoft learn*
-  - [Repository for Data API Builder](https://github.com/Azure/data-api-builder) 👤*Azure*
+  - [Repository for DAB](https://github.com/Azure/data-api-builder) 👤*Azure*
+  - [DAB samples](https://github.com/Azure-Samples/data-api-builder) 👤*Azure Samples*
   - [EF Power Tools to generate DAB-config](https://erikej.github.io/dotnet/sqlserver/powertools/2024/08/05/powertools-dab.html) 📓*ErikEJ*
   - [Try out the Data API Builder](https://bartwullems.blogspot.com/2023/03/azure-data-api-builder.html) 📓*Bart Wullems*
   - [Instant API using Data API builder](https://youtu.be/FsE4LVr2xQI) 📽*️1h:16m - Microsoft Zero to Hero Community*
