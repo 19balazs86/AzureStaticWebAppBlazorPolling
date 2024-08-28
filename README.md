@@ -9,9 +9,9 @@ I did not continue working on it...
 ##### Resources
 
 - [Blazor-starter template](https://github.com/staticwebdev/blazor-starter) 👤*StaticWebDev*
-- [Fallen in love Azure Static Web Apps](https://youtu.be/AgP4p8qhi4s) 📽️*26m - James Montemagno*
+- [Fallen in love Azure Static Web Apps](https://youtu.be/AgP4p8qhi4s) 📽️*26 min - James Montemagno*
 - [Authenticate and Authorize](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization) 📚*Microsoft learn*
-  - [Authentication in Azure Static Web Apps](https://youtu.be/SqgSUgDlgLM) 📽*️35m - dotnetFlix - Stacy Cashmore*
+  - [Authentication in Azure Static Web Apps](https://youtu.be/SqgSUgDlgLM) 📽*️35 min - dotnetFlix - Stacy Cashmore*
   - [Auth0 in Azure SWA for Blazor WASM](https://auth0.com/blog/support-auth0-in-azure-static-web-apps-for-blazor-wasm) 📓*Auth0 blog*
 - [Deploying Blazor WASM to Azure Static Web Apps](https://www.dotnetcurry.com/aspnet-core/deploy-blazor-webassembly-azure-static-web-apps) 📓*DotnetCurry*
 - [#30DaysOfSWA](https://www.azurestaticwebapps.dev/) 📓
@@ -24,14 +24,16 @@ I did not continue working on it...
 - Connecting to a database with SWA
   - [Database connection overview](https://learn.microsoft.com/en-us/azure/static-web-apps/database-overview) 📚*Microsoft learn*
   - [Best practices with database connections](https://techcommunity.microsoft.com/t5/apps-on-azure-blog/building-static-web-apps-with-database-connections-best/ba-p/3777155) 📓*Tech Community*
-  - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6m - Azure Tips and Tricks - Microsoft Developer*
+  - [Connect to database directly from SWA](https://youtu.be/vGOnh0UrADg) 📽️*6 min - Azure Tips and Tricks - Microsoft Developer*
 - Data API Builder (DAP)
   - [Data API builder documentation](https://learn.microsoft.com/en-us/azure/data-api-builder) 📚*Microsoft learn*
   - [Repository for DAB](https://github.com/Azure/data-api-builder) 👤*Azure*
   - [DAB samples](https://github.com/Azure-Samples/data-api-builder) 👤*Azure Samples*
   - [EF Power Tools to generate DAB-config](https://erikej.github.io/dotnet/sqlserver/powertools/2024/08/05/powertools-dab.html) 📓*ErikEJ*
-  - [Try out the Data API Builder](https://bartwullems.blogspot.com/2023/03/azure-data-api-builder.html) 📓*Bart Wullems*
-  - [Instant API using Data API builder](https://youtu.be/FsE4LVr2xQI) 📽*️1h:16m - Microsoft Zero to Hero Community*
+  - Quick-start: [Try out the Data API Builder](https://bartwullems.blogspot.com/2023/03/azure-data-api-builder.html) 📓*Bart Wullems*
+  - 📽 Microsoft Zero to Hero Community
+    - [Instant API using Data API builder](https://youtu.be/FsE4LVr2xQI) 📽*️1h:16m*
+    - [Using DAB locally and in Azure Container Apps](https://youtu.be/IHgeNJgnDm4) 📽*️58 min*
 - GitHub actions and SWA [using Lighthouse](https://johnnyreilly.com/lighthouse-meet-github-actions) and [Playwright for SWA staging environments](https://johnnyreilly.com/playwright-github-actions-and-azure-static-web-apps-staging-environments) 📓*Johnny Reilly*
 
 
@@ -39,4 +41,4 @@ I did not continue working on it...
 ###### Other resources
 
 - [Deploying Blazor WASM to AWS S3 – Static Website Hosting with AWS + CDN with CloudFront](https://codewithmukesh.com/blog/deploying-blazor-webassembly-to-aws-s3) 📓*CodeWithMukesh* 
-- [Building website without installing anything](https://youtu.be/1Vg7bNjJY-0) *(Blazor WASM, GitHub Codespaces, GitHub Pages)* 📽️*8min-dotnet*
+- [Building website without installing anything](https://youtu.be/1Vg7bNjJY-0) *(Blazor WASM, GitHub Codespaces, GitHub Pages)* 📽️*8 min - dotnet*
