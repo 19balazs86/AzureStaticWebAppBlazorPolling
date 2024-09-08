@@ -6,14 +6,14 @@ Unfortunately, the API function does not support QueueTrigger. **Only HTTP trigg
 
 I did not continue working on it...
 
-##### Resources
+## Resources
 
 - [Blazor-starter template](https://github.com/staticwebdev/blazor-starter) 👤*StaticWebDev*
+- [Deploying, Custom domain (DNS zones), Authentication, Preview environments](https://youtu.be/igkqYNnO8Xg) 📽️*39 min - MS Azure Developers*
 - [Fallen in love Azure Static Web Apps](https://youtu.be/AgP4p8qhi4s) 📽️*26 min - James Montemagno*
 - [Authenticate and Authorize](https://learn.microsoft.com/en-us/azure/static-web-apps/authentication-authorization) 📚*Microsoft learn*
   - [Authentication in Azure Static Web Apps](https://youtu.be/SqgSUgDlgLM) 📽*️35 min - dotnetFlix - Stacy Cashmore*
   - [Auth0 in Azure SWA for Blazor WASM](https://auth0.com/blog/support-auth0-in-azure-static-web-apps-for-blazor-wasm) 📓*Auth0 blog*
-- [Deploying Blazor WASM to Azure Static Web Apps](https://www.dotnetcurry.com/aspnet-core/deploy-blazor-webassembly-azure-static-web-apps) 📓*DotnetCurry*
 - [#30DaysOfSWA](https://www.azurestaticwebapps.dev/) 📓
 - [Azure Static Web Apps CLI](https://azure.github.io/static-web-apps-cli) 📓*GitHub documentation*
   - Visual Studio can run the Client and API as multiple startup projects. If you are using the built-in authentication, you will need to start the Static WebApp with the following command:
@@ -36,9 +36,7 @@ I did not continue working on it...
     - [Using DAB locally and in Azure Container Apps](https://youtu.be/IHgeNJgnDm4) 📽*️58 min*
 - GitHub actions and SWA [using Lighthouse](https://johnnyreilly.com/lighthouse-meet-github-actions) and [Playwright for SWA staging environments](https://johnnyreilly.com/playwright-github-actions-and-azure-static-web-apps-staging-environments) 📓*Johnny Reilly*
 
-
-
-###### Other resources
+## Other resources
 
 - [Deploying Blazor WASM to AWS S3 – Static Website Hosting with AWS + CDN with CloudFront](https://codewithmukesh.com/blog/deploying-blazor-webassembly-to-aws-s3) 📓*CodeWithMukesh* 
 - [Building website without installing anything](https://youtu.be/1Vg7bNjJY-0) *(Blazor WASM, GitHub Codespaces, GitHub Pages)* 📽️*8 min - dotnet*
